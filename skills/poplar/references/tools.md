@@ -41,7 +41,7 @@ Responses are compact JSON: ids appear only where a follow-up call needs them, a
 
 | Tool | Args | Notes |
 |---|---|---|
-| `generate_image` | post_id*, prompt* | make an image on Poplar's pipeline and attach it — works from any client (bytes never pass through you). Costs AI credit. |
+| `generate_image` | post_id*, instructions | design an image FROM THE POST (its text + the workspace's default template, brand colours and image model — the app's own pipeline) and attach it. `instructions` = only the customer's specific ask, else omit. Needs post text first. Returns a preview image to show them. Costs AI credit. |
 | `create_media_upload` | post_id*, filename*, content_type* | the customer's own file: returns a presigned PUT + `media_key`. Upload the bytes, then `attach_media`. |
 | `attach_media` | post_id*, media_key OR url, content_type | records an uploaded `media_key`, or fetches a public image `url`. LinkedIn supports multiple images, a video, or a document. |
 | `remove_attachment` | post_id*, position* | drop the attachment at a position (from get_post) |
