@@ -30,6 +30,8 @@ stdio-only clients: `npx mcp-remote https://usepoplar.com/api/mcp --header "Auth
 
 The server sends `instructions` at initialize. Follow them; they take precedence over this file where they differ.
 
+You may already have this file without installing anything: the server publishes it as the MCP resource `poplar://skill` (and the tool reference as `poplar://skill/tools`). If your client can read resources, read `poplar://skill` before your first write in a session. Installing the skill only changes *when* you have it (before the connection exists) and where it lives (on disk).
+
 ## The one rule that matters
 
 **When the user wants a post written, do not write it. Call `start_draft`.** Poplar's writer applies their brand voice, the preferences learned from how they edit, their strategy and knowledge base. Text you write yourself is stored as-is, labelled `written_by: caller`, and gets none of that. Only use `create_draft` with your own text when the user hands you copy or explicitly asks after being offered Poplar's writer — and say so plainly.
